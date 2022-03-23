@@ -1,0 +1,29 @@
+<div class="form-container">
+  <h2 class="login-title">Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event, loginForm.value)">
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="admin@challange.com" formControlName="email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="**" type="password" formControlName="password" [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- <input type="password" [formControl]="password" placeholder="{{ 'Auth.Password' }}" class="txt"> -->
+
+    <button mat-raised-button style="margin: 15px;" color="primary" type="submit">Login</button>
+  </form>
+
+  <a routerLink="/register" routerLinkActive="active" class="login-registerLink">Don't have account? Register</a>
+
+</div>

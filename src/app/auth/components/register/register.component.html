@@ -1,0 +1,72 @@
+<div class="form-container">
+
+  <h2 class="register-title">Register</h2>
+
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event, registerForm.value)">
+
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Firstname</mat-label>
+        <input matInput placeholder="" formControlName="firstname" [formControl]="firstname" required>
+        <mat-error *ngIf="firstname.invalid">{{getErrorMessage(firstname)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Lirstname</mat-label>
+        <input matInput placeholder="" formControlName="lastname" [formControl]="lastname" required>
+        <mat-error *ngIf="lastname.invalid">{{getErrorMessage(lastname)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="admin@challenge.com" type="email" formControlName="email" [formControl]="email"
+          required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="******" minLength="6" type="password" formControlName="password"
+          [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput placeholder="******" type="password" formControlName="confirmPassword"
+          [formControl]="confirmPassword" required>
+        <mat-error *ngIf="confirmPassword.invalid">{{getErrorMessage(confirmPassword)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select [formControl]="role">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="role.invalid">{{getErrorMessage(role)}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button style="margin: 15px;" color="primary" type="submit">Register</button>
+
+  </form>
+
+  <a routerLink="/login" routerLinkActive="active" class="login-registerLink">Already have account? Login</a>
+
+</div>
